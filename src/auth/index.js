@@ -46,7 +46,7 @@ export const signout = (next) => {
     .then((res) => {
         console.log(res)
         return res.json()
-        window.location.reload()
+        
     }).catch(err => console.log(err))
 }
 
@@ -71,4 +71,55 @@ export const updateUser = (user,next) => {
             next()
         }
     }
+}
+
+export const forgotPassword = email => {
+    console.log("email - " , email)
+    return fetch(`${process.env.REACT_APP_API_URL}/forget-password/` , {
+        method : "PUT",
+        headers : {
+            Accept : "application/json",
+            "Content-Type" : "application/json"
+        },
+        body : JSON.stringify({email})
+
+    })
+    .then(res => {
+        console.log("forget password reponse ", res)
+        return res.json()
+    })
+    .catch(err => console.log(err))
+}
+
+export const resetPassword = resetInfo => {
+    return fetch(`${process.env.REACT_APP_API_URL}/reset-password/` , {
+        method : "PUT",
+        headers : {
+            Accept : "application/json",
+            "Content-Type" :"application/json"
+        },
+        body : JSON.stringify({resetInfo})
+    })
+    .then(res => {
+        console.log("reset info " , res)
+        return res.json()
+
+    })
+    .catch(err => console.log(err))
+}
+
+export const socialLogin = user => {
+    return fetch(`${process.env.REACT_APP_API_URL}/social-login/` , {
+        method : "POST",
+        headers : {
+            Accept :"application/json",
+            "Content-Type" : "application/json"
+        },
+        body : JSON.stringify(user)
+    })
+    .then(res => {
+        console.log("sigin response " , res)
+        return res.json()
+    })
+    .catch(err => console.log(err))
 }

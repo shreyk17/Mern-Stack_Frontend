@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import defaultProfile from '../images/avatar.jpg'
 import { isAuthenticated } from '../auth';
-import { findPeople, follow, list } from './apiUser'
+import { findPeople, follow } from './apiUser'
 
 class FindPeople extends Component {
 

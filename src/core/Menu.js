@@ -22,6 +22,11 @@ const Menu = ({history}) => {
                 <li className = "nav-item">
                     <Link className = "nav-link" style = {isActive(history , "/users")} to = "/users">Users</Link>
                 </li>
+                <li className = "nav-item">
+                                <Link className = "nav-link" to = {`/post/create`}  style = {isActive(history , `/post/create`)} >
+                                    Create Post
+                                </Link>
+                </li>  
 
                 {!isAuthenticated() && (
                     <>
@@ -42,17 +47,12 @@ const Menu = ({history}) => {
                                 </Link>
                         </li>
                         <li className = "nav-item">
-                                <Link className = "nav-link" to = {`/post/create`}  style = {isActive(history , `/post/create`)} >
-                                    Create Post
-                                </Link>
-                        </li>  
-                        <li className = "nav-item">
                                 <Link className = "nav-link" to = {`/user/${isAuthenticated().user._id}`}  style = {isActive(history , `/user/${isAuthenticated().user._id}`)} >
                                     {`${isAuthenticated().user.name}'s profile`}
                                 </Link>
                         </li> 
                         <li className = "nav-item">
-                            <span className = "nav-link" style = {isActive(history , "/signup") , {cursor : 'pointer'}} onClick = {() => signout(() => history.push('/'))}>Sign Out</span>
+                            <span className = "nav-link" style = {{cursor : 'pointer',color:"ffffff"}} onClick = {() => signout(() => history.push('/signin'))}>Sign Out</span>
                         </li>
                     </>
                 )}

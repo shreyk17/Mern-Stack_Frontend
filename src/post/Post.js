@@ -31,10 +31,11 @@ class Post extends Component {
                 {posts.map((post, i) => {
                     const posterId = post.postedBy ? `/user/${post.postedBy._id}`: ""
                     const postedName = post.postedBy ? post.postedBy.name: " Unknown user"
+                    console.log(postedName)
                     return (
                         
                         <div className="card col-md-4" key={i}>
-                            <br/>
+                           
                             {/* <img
                                 style={{ height: "25vw", width: "100%" , objectFit : 'cover'}}
                                 className="img-thumbnail"
@@ -44,7 +45,7 @@ class Post extends Component {
                             /> */}
                             <div className="card-body">
                                 <img
-                                    style={{ height: "200px", width: "auto" }}
+                                    style={{ height: "200px", width: "100%" }}
                                     className="img-thumbnail mb-3"
                                     src={`${
                                         process.env.REACT_APP_API_URL
@@ -60,12 +61,13 @@ class Post extends Component {
                                     Posted By 
                                     <Link to = {`${posterId}`}> {postedName} </Link>
                                     on {new Date(post.created).toDateString()}
-                                     and updated at {new Date(post.updated).toDateString()}
+                                     {/* and updated at {new Date(post.updated).toDateString()} */}
                                 </p>
                                 <Link to = {`/post/${post._id}`} className = "btn btn-raised btn-secondary btn-sm">
                                     Read More
                                 </Link>
                             </div>
+                            <br/>
                         </div>
                     )
 
